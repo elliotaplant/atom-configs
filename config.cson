@@ -1,0 +1,95 @@
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "795eef1c-c9a2-45a0-8c4a-e32d8da410cf"
+    html:
+      end_with_newline: true
+      indent_size: 2
+      wrap_attributes: "force-aligned"
+      wrap_line_length: 70
+    js:
+      indent_size: 2
+    typescript:
+      break_chained_methods: true
+      end_with_newline: true
+      indent_size: 2
+  "atom-shell-commands":
+    commands: [
+      {
+        name: "SmartBuild"
+        command: "echo moooooo"
+        options:
+          cwd: "{FileDir}"
+          keymap: "cmd-shift-b"
+      }
+    ]
+  autosave:
+    enabled: true
+  core:
+    audioBeep: false
+    closeEmptyWindows: false
+    followSymlinks: false
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "desktop.ini"
+      "README.md"
+      "CHANGELOG.md"
+      "package-lock.json"
+    ]
+    packagesWithKeymapsDisabled: [
+      "emmet"
+    ]
+    restorePreviousWindowsOnStart: "no"
+    telemetryConsent: "no"
+  editor:
+    fontSize: 17
+    preferredLineLength: 120
+    showIndentGuide: true
+    softWrap: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "c8be361d-65b0-e083-6643-808e2d26edb2"
+  fonts: {}
+  "git-blame":
+    columnWidth: 231
+    dateFormatString: "MMM-DD"
+    showHash: false
+    showOnlyLastNames: true
+  "git-plus":
+    general:
+      _analyticsUserId: "d8d69ea3-1eab-40f7-a718-ef4a9c1c9c98"
+  "highlight-line": {}
+  jshint:
+    supportLintingJsx: true
+  linter:
+    ignoreGlob: "**/*.min.{js,css} **/*.jsx"
+  "linter-tslint": {}
+  "linter-ui-default":
+    panelHeight: 99
+    showPanel: true
+  minimap: {}
+  "split-diff":
+    diffWords: true
+    ignoreWhitespace: true
+    leftEditorColor: "red"
+    rightEditorColor: "green"
+    scrollSyncType: "Vertical + Horizontal"
+    syncHorizontalScroll: true
+  "sync-settings":
+    _analyticsUserId: "ce5df772-4da0-4bb9-8f26-614728dc39fe"
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+".java.source":
+  editor:
+    preferredLineLength: 100
+".source.ts":
+  editor:
+    scrollPastEnd: false
+    showIndentGuide: false
