@@ -13,6 +13,9 @@
       break_chained_methods: true
       end_with_newline: true
       indent_size: 2
+  "atom-ide-ui":
+    hyperclick:
+      darwinTriggerKeys: "altKey"
   "atom-shell-commands":
     commands: [
       {
@@ -28,6 +31,10 @@
   core:
     audioBeep: false
     closeEmptyWindows: false
+    disabledPackages: [
+      "jshint"
+      "linter"
+    ]
     followSymlinks: false
     ignoredNames: [
       ".git"
@@ -47,7 +54,7 @@
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
   editor:
-    fontSize: 17
+    fontSize: 16
     preferredLineLength: 120
     showIndentGuide: true
     softWrap: true
@@ -64,14 +71,16 @@
     general:
       _analyticsUserId: "d8d69ea3-1eab-40f7-a718-ef4a9c1c9c98"
   "highlight-line": {}
+  "ide-java":
+    errors:
+      incompleteClasspathSeverity: "ignore"
   jshint:
     supportLintingJsx: true
   linter:
     ignoreGlob: "**/*.min.{js,css} **/*.jsx"
   "linter-tslint": {}
   "linter-ui-default":
-    panelHeight: 99
-    showPanel: true
+    panelHeight: 177
   minimap: {}
   "split-diff":
     diffWords: true

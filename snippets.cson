@@ -36,4 +36,7 @@
     'body': '.then($1 => console.log(\'$1\', $1) || $1)'
   'Observable console log':
     'prefix': 'olog'
-    'body': '.do($1 => console.log(\'$1\'))'
+    'body': '.do($1 => console.log(\'$1\', $1))'
+  'TSlint disable max-line-length':
+    'prefix': 'tsl'
+    'body': '// tslint:disable:max-line-length\n$1// tslint:enable:max-line-length'

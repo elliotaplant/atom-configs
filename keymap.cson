@@ -44,9 +44,11 @@
   'cmd-ctrl-r': 'tree-view:show-current-file-in-file-manager'
   'cmd-;': 'trailing-semicolon:semicolon'
 
+
 'atom-workspace':
   'cmd-\'': 'typescript:sync'
   'cmd->': 'application:open-your-keymap'
+  'alt->': 'application:open-your-snippets'
 
 'body':
   'cmd-o': 'tree-view:toggle-focus'
