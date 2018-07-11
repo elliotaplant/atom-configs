@@ -58,3 +58,16 @@
   'alt-right': 'tree-view:expand-item'
   'cmd-ctrl-c': 'tree-view:copy-project-path'
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
+
+
+# Commands that were removed from git-plus
+'.platform-darwin':
+  'cmd-shift-h': 'git-plus:menu'
+  'cmd-shift-c': 'git-plus:commit'
+  'cmd-shift-a s': 'git-plus:status'
+  'cmd-shift-a q': 'git-plus:add-and-commit-and-push'
+  'cmd-shift-a a': 'git-plus:add-all-and-commit'
+  'cmd-shift-a p': 'git-plus:add-all-commit-and-push'
+'.platform-darwin atom-text-editor':
+  'cmd-shift-a': 'git-plus:add'
+  'cmd-shift-a c': 'git-plus:add-and-commit'

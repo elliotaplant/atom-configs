@@ -8,7 +8,11 @@
       wrap_attributes: "force-aligned"
       wrap_line_length: 70
     js:
-      indent_size: 2
+      end_with_newline: true
+      indent_size: 4
+    jsx:
+      end_with_newline: true
+      indent_size: 4
     typescript:
       break_chained_methods: true
       end_with_newline: true
@@ -19,8 +23,8 @@
   "atom-shell-commands":
     commands: [
       {
-        name: "SmartBuild"
         command: "echo moooooo"
+        name: "SmartBuild"
         options:
           cwd: "{FileDir}"
           keymap: "cmd-shift-b"
@@ -34,6 +38,8 @@
     disabledPackages: [
       "jshint"
       "linter"
+      "markdown-preview"
+      "markdown-preview-plus"
     ]
     followSymlinks: false
     ignoredNames: [
@@ -57,6 +63,7 @@
     fontSize: 16
     preferredLineLength: 120
     showIndentGuide: true
+    showInvisibles: true
     softWrap: true
     tabType: "soft"
   "exception-reporting":
@@ -68,9 +75,13 @@
     showHash: false
     showOnlyLastNames: true
   "git-plus":
+    experimental:
+      diffBranches: true
+      useSplitDiff: false
     general:
       _analyticsUserId: "d8d69ea3-1eab-40f7-a718-ef4a9c1c9c98"
-  "highlight-line": {}
+  "highlight-line":
+    enableBackgroundColor: false
   "ide-java":
     errors:
       incompleteClasspathSeverity: "ignore"
