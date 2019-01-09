@@ -30,21 +30,6 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
-'atom-text-editor':
-  'cmd-r': 'tree-view:reveal-active-file'
-  'cmd-o': 'tree-view:toggle-focus'
-  'cmd-i': 'editor:auto-indent'
-  'cmd-shift-e': 'open-similar:open'
-  'cmd-b': 'typescript:go-to-declaration'
-  'cmd-p': 'typescript:show-type'
-  'shift-cmd-o': 'tabs:close-other-tabs'
-  'shift-cmd-r': 'tabs:close-tabs-to-right'
-  'shift-cmd-l': 'tabs:close-other-left'
-  'cmd-ctrl-c': 'editor:copy-project-path'
-  'cmd-ctrl-r': 'tree-view:show-current-file-in-file-manager'
-  'cmd-;': 'trailing-semicolon:semicolon'
-
-
 'atom-workspace':
   'cmd-\'': 'typescript:sync'
   'cmd->': 'application:open-your-keymap'
@@ -59,15 +44,42 @@
   'cmd-ctrl-c': 'tree-view:copy-project-path'
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
 
-
-# Commands that were removed from git-plus
 '.platform-darwin':
+  'cmd-\\': 'tree-view:toggle'
+  'cmd-alt-g': 'github:toggle-git-tab'
+
+  # Commands that were removed from git-plus
   'cmd-shift-h': 'git-plus:menu'
   'cmd-shift-c': 'git-plus:commit'
   'cmd-shift-a s': 'git-plus:status'
   'cmd-shift-a q': 'git-plus:add-and-commit-and-push'
   'cmd-shift-a a': 'git-plus:add-all-and-commit'
   'cmd-shift-a p': 'git-plus:add-all-commit-and-push'
-'.platform-darwin atom-text-editor':
+
+'.platform-darwin atom-text-editor:not([mini])':
   'cmd-shift-a': 'git-plus:add'
   'cmd-shift-a c': 'git-plus:add-and-commit'
+  'cmd-shift-s': 'spell-check:correct-misspelling'
+  'cmd-b': 'goto-definition:go'
+  'cmd-:': 'trailing-semicolon:comma'
+  'cmd-alt-up': 'multi-cursor:expandUp'
+  'cmd-alt-down': 'multi-cursor:expandDown'
+  'cmd-m': 'bracket-matcher:go-to-matching-bracket'
+  'cmd-M': 'bracket-matcher:select-inside-brackets'
+  'cmd-r': 'tree-view:reveal-active-file'
+  'cmd-o': 'tree-view:toggle-focus'
+  'cmd-i': 'cursor-history:prev'
+  'cmd-shift-i': 'cursor-history:next'
+  'cmd-shift-e': 'open-similar:open'
+  'cmd-p': 'typescript:show-type'
+  'shift-cmd-o': 'tabs:close-other-tabs'
+  'cmd-ctrl-c': 'editor:copy-project-path'
+  'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
+  'cmd-;': 'trailing-semicolon:semicolon'
+  'ctrl-alt-up': 'editor:select-larger-syntax-node'
+  'ctrl-alt-down': 'editor:select-smaller-syntax-node'
+  'alt-up': 'block-travel:move-up'
+  'alt-down': 'block-travel:move-down'
+  'cmd-B': 'fuzzy-finder:toggle-buffer-finder'
+  'alt-t': 'swap-selection:right'
+  'ctrl-alt-cmd-c': 'macros:cycleVariableType'
