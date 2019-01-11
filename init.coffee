@@ -9,3 +9,20 @@
 # atom.workspace.observeTextEditors (editor) ->
 #   editor.onDidSave ->
 #     console.log "Saved! #{editor.getPath()}"
+atom.commands.add 'atom-text-editor',
+  'user:scroll-up': (event) ->
+    editor = @getModel()
+    scrollTop = editor.getScrollTop()
+    lineHeight = editor.getLineHeightInPixels()
+    scrollTo = scrollTop - (lineHeight * 10)
+
+    editor.setScrollTop(scrollTo)
+
+atom.commands.add 'atom-text-editor',
+  'user:scroll-down': (event) ->
+    editor = @getModel()
+    scrollTop = editor.getScrollTop()
+    lineHeight = editor.getLineHeightInPixels()
+    scrollTo = scrollTop + (lineHeight * 10)
+
+    editor.setScrollTop(scrollTo)

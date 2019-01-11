@@ -98,6 +98,12 @@
   'import addNotificationAction':
     'prefix': 'inotif'
     'body': 'import { addNotificationAction } from \'AppReducers/notifications\';\n'
+  'import transformation':
+    'prefix': 'itransformation'
+    'body': 'import { $1 } from \'AppUtils/transformation\';\n'
+  'import materialui icon':
+    'prefix': 'imuiicon'
+    'body': 'import $1 from \'@material-ui/icons/$1\';\n'
   'describe tests':
     'prefix': 'desc'
     'body': 'describe(\'$1\', () => {\n\n});'

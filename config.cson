@@ -54,6 +54,7 @@
       "atom-typescript"
       "linter-xo"
       "emmet"
+      "language-typescript"
     ]
     followSymlinks: false
     ignoredNames: [
@@ -90,6 +91,7 @@
     basePath: "/Users/elliotplant"
     pathToLCOV: "../../Users/elliotplant/Documents/dark-pool-web-client/dpwui/assets/coverage/lcov.info"
   editor:
+    fontSize: 17
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
@@ -124,7 +126,7 @@
       fixOnSave: true
   "linter-tslint": {}
   "linter-ui-default":
-    panelHeight: 300
+    panelHeight: 177
     showPanel: true
   minimap: {}
   "split-diff":

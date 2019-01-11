@@ -12,6 +12,7 @@
 
 
 # If you prefer Javascript, write it between backticks.
+# cycleVariableType
 `
 const availableFormats = {
   CAMEL_CASE: 'camelCase',
@@ -105,4 +106,8 @@ this.cycleVariableType = function() {
   selections.forEach((selection, index) => selection.insertText(formattedWords[index], { select: true }))
 }
 this.cycleVariableType.hideIcon = true; // dont show this on the toolbar
+`
+
+# pasteWith
+`
 `

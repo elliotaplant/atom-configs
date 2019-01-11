@@ -83,3 +83,5 @@
   'cmd-B': 'fuzzy-finder:toggle-buffer-finder'
   'alt-t': 'swap-selection:right'
   'ctrl-alt-cmd-c': 'macros:cycleVariableType'
+  'cmd-shift-J': 'user:scroll-down'
+  'cmd-shift-K': 'user:scroll-up'
