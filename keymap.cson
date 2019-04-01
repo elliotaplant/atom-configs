@@ -43,22 +43,33 @@
   'alt-right': 'tree-view:expand-item'
   'cmd-ctrl-c': 'tree-view:copy-project-path'
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
+  'h': 'tree-view:recursive-collapse-directory'
+  'left': 'tree-view:recursive-collapse-directory'
 
-'.platform-darwin':
+'.platform-darwin atom-workspace':
   'cmd-\\': 'tree-view:toggle'
   'cmd-alt-g': 'github:toggle-git-tab'
-
   # Commands that were removed from git-plus
-  'cmd-shift-h': 'git-plus:menu'
   'cmd-shift-c': 'git-plus:commit'
-  'cmd-shift-a s': 'git-plus:status'
-  'cmd-shift-a q': 'git-plus:add-and-commit-and-push'
-  'cmd-shift-a a': 'git-plus:add-all-and-commit'
-  'cmd-shift-a p': 'git-plus:add-all-commit-and-push'
+  'cmd-shift-a': 'git-plus:add-all-and-commit'
+
+'.results-view':
+  'k': 'core:move-up'
+  'j': 'core:move-down'
+  'h': 'core:move-left'
+  'l': 'core:move-right'
+
+'atom-text-editor, .select-list':
+  'ctrl-k': 'core:move-up'
+  'ctrl-j': 'core:move-down'
+  'ctrl-h': 'core:move-left'
+  'ctrl-l': 'core:move-right'
+
+'.select-list':
+  'shift-tab': 'core:move-up'
+  'tab': 'core:move-down'
 
 '.platform-darwin atom-text-editor:not([mini])':
-  'cmd-shift-a': 'git-plus:add'
-  'cmd-shift-a c': 'git-plus:add-and-commit'
   'cmd-shift-s': 'spell-check:correct-misspelling'
   'cmd-b': 'goto-definition:go'
   'cmd-:': 'trailing-semicolon:comma'
@@ -72,7 +83,6 @@
   'cmd-shift-i': 'cursor-history:next'
   'cmd-shift-e': 'open-similar:open'
   'cmd-p': 'typescript:show-type'
-  'shift-cmd-o': 'tabs:close-other-tabs'
   'cmd-ctrl-c': 'editor:copy-project-path'
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
   'cmd-;': 'trailing-semicolon:semicolon'
@@ -83,5 +93,46 @@
   'cmd-B': 'fuzzy-finder:toggle-buffer-finder'
   'alt-t': 'swap-selection:right'
   'ctrl-alt-cmd-c': 'macros:cycleVariableType'
-  'cmd-shift-J': 'user:scroll-down'
-  'cmd-shift-K': 'user:scroll-up'
+  'cmd-shift-V': 'macros:pasteWithCommas'
+  'ctrl-cmd-shift-V': 'macros:pasteWithCommaNewlines'
+  'ctrl-cmd-k': 'editor:move-line-up'
+  'ctrl-cmd-j': 'editor:move-line-down'
+  'alt-k': 'block-travel:move-up'
+  'alt-j': 'block-travel:move-down'
+  'cmd-escape': 'core:cancel'
+  'cmd-ctrl-h': 'window:focus-pane-on-left'
+  'cmd-ctrl-l': 'window:focus-pane-on-right'
+  'cmd-alt-k': 'multi-cursor:expandUp'
+  'cmd-alt-j': 'multi-cursor:expandDown'
+  'cmd-l': 'editor:move-to-end-of-screen-line'
+  'alt-l': 'editor:move-to-end-of-word'
+  'alt-shift-l': 'editor:select-to-end-of-word'
+  'cmd-shift-l': 'editor:select-to-end-of-line'
+  'cmd-h': 'editor:move-to-first-character-of-line'
+  'alt-h': 'editor:move-to-beginning-of-word'
+  'alt-shift-h': 'editor:select-to-beginning-of-word'
+  'cmd-shift-h': 'editor:select-to-first-character-of-line'
+  'cmd-shift-j': 'core:select-to-bottom'
+  'alt-shift-j': 'block-travel:select-down'
+  'cmd-shift-k': 'core:select-to-top'
+  'alt-shift-k': 'block-travel:select-up'
+
+'body atom-text-editor.autocomplete-active':
+  'tab': 'autocomplete-plus:move-down'
+  'shift-tab': 'autocomplete-plus:move-up'
+
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'shift-h': 'core:select-left'
+  'shift-l': 'core:select-right'
+  'shift-j': 'core:select-down'
+  'shift-k': 'core:select-up'
+  'space': 'vim-mode-plus:toggle-fold'
+  'cmd-j': 'vim-mode-plus:join'
+
+'.platform-darwin atom-text-editor[data-grammar="source go"]':
+  'cmd-b': 'golang:godef'
+
+'.platform-darwin':
+  'cmd-alt-l': 'pane:show-next-item'
+  'cmd-alt-h': 'pane:show-previous-item'
+  'shift-cmd-o': 'tabs:close-other-tabs'

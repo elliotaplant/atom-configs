@@ -135,3 +135,19 @@
   'Import variables':
     'prefix': 'im'
     'body': '@import \'~styles/variables\';\n'
+
+'.source.python':
+  'Print message with variable':
+    'prefix': 'pri'
+    'body': 'print(\'$1\', $1)'
+
+'.source.go':
+  'Print message with variable':
+    'prefix': 'pri'
+    'body': 'fmt.Printf("$1: %s\\\\n", $1)'
+  'Spew message with variable':
+    'prefix': 'pris'
+    'body': 'fmt.Printf("$1: %s\\\\n", spew.Sdump($1))'
+  'Error check':
+    'prefix': 'err'
+    'body': 'if err != nil {\nreturn err\n}'

@@ -17,6 +17,7 @@
 const availableFormats = {
   CAMEL_CASE: 'camelCase',
   SNAKE_CASE: 'snake_case',
+  KEBOB_CASE: 'kebob-case',
   CONST_CASE: 'CONST_CASE',
   CLASS_CASE: 'ClassCase',
   SENTANCE_CASE: 'sentance case',
@@ -29,6 +30,9 @@ function getFormat(words) {
     if (words.includes('_')) {
       return availableFormats.SNAKE_CASE;
     }
+    if (words.includes('-')) {
+      return availableFormats.KEBOB_CASE;
+    }
     return availableFormats.CAMEL_CASE;
   } else if (words === words.toUpperCase()) {
     return availableFormats.CONST_CASE;
@@ -40,6 +44,9 @@ function splitWords(words) {
   const format = getFormat(words);
   if (format === availableFormats.SENTANCE_CASE) {
     return words.split(' ');
+  }
+  if (format === availableFormats.KEBOB_CASE) {
+    return words.split('-');
   }
   if (format === availableFormats.SNAKE_CASE || format === availableFormats.CONST_CASE) {
     return words.split('_');
@@ -68,6 +75,9 @@ function sendToFormat(words, format) {
   if (format === availableFormats.SNAKE_CASE) {
     return splittedWords.join('_').toLowerCase();
   }
+  if (format === availableFormats.KEBOB_CASE) {
+    return splittedWords.join('-').toLowerCase();
+  }
   if (format === availableFormats.CONST_CASE) {
     return splittedWords.join('_').toUpperCase();
   }
@@ -88,17 +98,20 @@ this.cycleVariableType = function() {
     return;
   }
   const formatOrder = [
-    availableFormats.CAMEL_CASE,
-    availableFormats.SNAKE_CASE,
     availableFormats.CONST_CASE,
+    availableFormats.KEBOB_CASE,
+    availableFormats.SNAKE_CASE,
+    availableFormats.CAMEL_CASE,
     availableFormats.CLASS_CASE,
     availableFormats.SENTANCE_CASE,
   ];
 
   const formats = Array.from(new Set(selectionWords.map(words => getFormat(words))));
+  console.log('formats[0]', formats[0])
 
   let formattedWords = selectionWords;
   let nextFormat = formatOrder[(formatOrder.indexOf(formats[0]) + 1) % formatOrder.length];
+  console.log('nextFormat', nextFormat)
   if (formats.length > 1) {
     nextFormat = formats[0];
   }
@@ -108,6 +121,39 @@ this.cycleVariableType = function() {
 this.cycleVariableType.hideIcon = true; // dont show this on the toolbar
 `
 
-# pasteWith
+# pasteWithCommas
 `
+function pasteJoined(joiner) {
+  const toPaste = atom.clipboard.metadata.selections.map(selection => selection.text).join(joiner);
+  atom.workspace.getActiveTextEditor()
+    .selections.forEach(selection => selection.insertText(toPaste), { select: true });
+}
+
+this.pasteWithCommas = function() {
+  pasteJoined(', ');
+}
+this.pasteWithCommas.hideIcon = true;
+
+this.pasteWithCommaNewlines = function() {
+  pasteJoined(',\n');
+}
+this.pasteWithCommaNewlines.hideIcon = true;
+`
+
+# propTypes
+`
+this.propTypes = function propTypes(joiner) {
+  const componentLine = '.propTypes = {'
+  const firstProptype = '  prop: PropTypes.string.isRequired,';
+  const closing = '}';
+  const importStatement = "import PropTypes from 'prop-types';"
+  console.log(atom.workspace.getActiveTextEditor())
+  atom.workspace.getActiveTextEditor()
+    .selections[0].insertText([
+      componentLine,
+      firstProptype,
+      closing,
+      importStatement,
+    ].join('\n'))
+}
 `
