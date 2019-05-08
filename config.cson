@@ -4,6 +4,7 @@
       _analyticsUserId: "795eef1c-c9a2-45a0-8c4a-e32d8da410cf"
     go:
       beautify_on_save: true
+      disabled: true
     html:
       end_with_newline: true
       wrap_line_length: 70
@@ -22,7 +23,6 @@
       object_curly_spacing: true
       space_before_conditional: false
     python:
-      beautify_on_save: true
       max_line_length: 120
       multi_line_output: "Hanging Indent"
     scss:
@@ -70,7 +70,6 @@
       "language-typescript"
       "linter"
     ]
-    followSymlinks: false
     ignoredNames: [
       ".git"
       ".hg"
@@ -115,7 +114,6 @@
     showIndentGuide: true
     showInvisibles: true
     softWrap: true
-    tabType: "soft"
   "exception-reporting":
     userId: "c8be361d-65b0-e083-6643-808e2d26edb2"
   fonts: {}
@@ -131,7 +129,8 @@
     general:
       _analyticsUserId: "d8d69ea3-1eab-40f7-a718-ef4a9c1c9c98"
   "go-plus":
-    autocomplete: {}
+    autocomplete:
+      suppressBuiltinAutocompleteProvider: false
     config: {}
     lint:
       tool: "golangci-lint"
@@ -142,10 +141,10 @@
       focusOnFailure: false
     test:
       runTestsOnSave: false
-      runTestsWithCoverage: false
   "goto-definition":
     performanceMode: true
-  "highlight-line": {}
+  "highlight-line":
+    hideHighlightOnSelect: true
   "ide-java":
     errors:
       incompleteClasspathSeverity: "ignore"
@@ -171,6 +170,11 @@
   "linter-ui-default":
     panelHeight: 300
   minimap: {}
+  "spell-check":
+    addKnownWords: true
+    knownWords: [
+      "Binance"
+    ]
   "split-diff":
     ignoreWhitespace: true
     leftEditorColor: "red"

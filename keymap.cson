@@ -116,6 +116,11 @@
   'alt-shift-j': 'block-travel:select-down'
   'cmd-shift-k': 'core:select-to-top'
   'alt-shift-k': 'block-travel:select-up'
+  'alt-shift-k': 'block-travel:select-up'
+  'shift-ctrl-k': 'core:select-up'
+  'shift-ctrl-j': 'core:select-down'
+  'shift-ctrl-h': 'core:select-left'
+  'shift-ctrl-l': 'core:select-right'
 
 'body atom-text-editor.autocomplete-active':
   'tab': 'autocomplete-plus:move-down'
@@ -136,3 +141,8 @@
   'cmd-alt-l': 'pane:show-next-item'
   'cmd-alt-h': 'pane:show-previous-item'
   'shift-cmd-o': 'tabs:close-other-tabs'
+
+'.platform-darwin atom-text-editor':
+  'shift-alt-cmd-l': 'window:toggle-right-dock'
+  'shift-alt-cmd-h': 'window:toggle-left-dock'
+  'shift-alt-cmd-j': 'window:toggle-bottom-dock'

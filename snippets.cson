@@ -142,6 +142,9 @@
     'body': 'print(\'$1\', $1)'
 
 '.source.go':
+  'Print message':
+    'prefix': 'pr'
+    'body': 'fmt.Println("$1")'
   'Print message with variable':
     'prefix': 'pri'
     'body': 'fmt.Printf("$1: %s\\\\n", $1)'
@@ -150,4 +153,7 @@
     'body': 'fmt.Printf("$1: %s\\\\n", spew.Sdump($1))'
   'Error check':
     'prefix': 'err'
-    'body': 'if err != nil {\nreturn err\n}'
+    'body': 'if err != nil {\n\treturn err\n}'
+  'cmp Diff':
+    'prefix': 'ifdif'
+    'body': 'if diff := cmp.Diff($1, $2); diff != "" {\n\tt.Errorf("$3 mismatch (-want +got):\\\\n%s", diff)\n}'
