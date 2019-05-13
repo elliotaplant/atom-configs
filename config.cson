@@ -98,6 +98,7 @@
       "emmet"
       "multi-cursor"
       "goto-definition"
+      "grammar-selector"
     ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
@@ -168,7 +169,7 @@
   "linter-flake8": {}
   "linter-tslint": {}
   "linter-ui-default":
-    panelHeight: 300
+    panelHeight: 177
   minimap: {}
   "spell-check":
     addKnownWords: true
