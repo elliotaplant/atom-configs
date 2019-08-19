@@ -31,9 +31,9 @@
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
 'atom-workspace':
-  'cmd-\'': 'typescript:sync'
   'cmd->': 'application:open-your-keymap'
   'alt->': 'application:open-your-snippets'
+  'cmd-ctrl-p': 'tree-view:collapse-all'
 
 'body':
   'cmd-o': 'tree-view:toggle-focus'
@@ -69,7 +69,7 @@
   'shift-tab': 'core:move-up'
   'tab': 'core:move-down'
 
-'.platform-darwin atom-text-editor:not([mini])':
+'atom-text-editor, .platform-darwin atom-text-editor:not([mini])':
   'cmd-shift-s': 'spell-check:correct-misspelling'
   'cmd-b': 'goto-definition:go'
   'cmd-:': 'trailing-semicolon:comma'
@@ -93,8 +93,6 @@
   'cmd-B': 'fuzzy-finder:toggle-buffer-finder'
   'alt-t': 'swap-selection:right'
   'ctrl-alt-cmd-c': 'macros:cycleVariableType'
-  'cmd-shift-V': 'macros:pasteWithCommas'
-  'ctrl-cmd-shift-V': 'macros:pasteWithCommaNewlines'
   'ctrl-cmd-k': 'editor:move-line-up'
   'ctrl-cmd-j': 'editor:move-line-down'
   'alt-k': 'block-travel:move-up'
@@ -108,6 +106,8 @@
   'alt-l': 'editor:move-to-end-of-word'
   'cmd-h': 'editor:move-to-first-character-of-line'
   'alt-h': 'editor:move-to-beginning-of-word'
+  'ctrl-tab': 'snippets:next-tab-stop'
+
 
 'body atom-text-editor.autocomplete-active':
   'tab': 'autocomplete-plus:move-down'
@@ -120,6 +120,8 @@
   'shift-k': 'core:select-up'
   'space': 'vim-mode-plus:toggle-fold'
   'cmd-j': 'vim-mode-plus:join'
+  'shift-u': 'vim-mode-plus:upper-case-first'
+  'cmd-shift-u': 'vim-mode-plus:lower-case-first'
 
 '.platform-darwin atom-text-editor[data-grammar="source go"]':
   'cmd-b': 'golang:godef'
@@ -145,3 +147,5 @@
   'alt-shift-j': 'block-travel:select-down'
   'cmd-shift-k': 'core:select-to-top'
   'alt-shift-k': 'block-travel:select-up'
+  'cmd-shift-V': 'macros:pasteWithCommas'
+  'ctrl-cmd-shift-V': 'macros:pasteWithCommaNewlines'

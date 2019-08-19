@@ -54,6 +54,8 @@
       }
     ]
   "autocomplete-plus":
+    backspaceTriggersAutocomplete: true
+    minimumWordLength: 1
     useCoreMovementCommands: false
   "autocomplete-snippets": {}
   autosave:
@@ -102,10 +104,11 @@
     ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
-    warnOnLargeFileLimit: 5
+    warnOnLargeFileLimit: 1
   "coverage-gutter":
     basePath: "/Users/elliotplant"
     pathToLCOV: "../../Users/elliotplant/Documents/dark-pool-web-client/dpwui/assets/coverage/lcov.info"
+  "cursor-history": {}
   "disable-keybindings":
     prefixKeys: [
       "cmd-k"
@@ -117,7 +120,14 @@
     softWrap: true
   "exception-reporting":
     userId: "c8be361d-65b0-e083-6643-808e2d26edb2"
+  "file-types":
+    $debug: true
+    Dockerfile: {}
+    "Dockerfile.*": "source.dockerfile"
   fonts: {}
+  "fuzzy-finder":
+    scoringSystem: "fast"
+    useRipGrep: true
   "git-blame":
     columnWidth: 231
     dateFormatString: "MMM-DD"
@@ -144,8 +154,7 @@
       runTestsOnSave: false
   "goto-definition":
     performanceMode: true
-  "highlight-line":
-    hideHighlightOnSelect: true
+  "highlight-line": {}
   "ide-java":
     errors:
       incompleteClasspathSeverity: "ignore"
@@ -166,10 +175,12 @@
     global:
       eslintrcPath: "/Users/elliotplant/.eslintrc.js"
       globalNodePath: "/usr/local"
-  "linter-flake8": {}
+  "linter-flake8":
+    maxLineLength: 120
   "linter-tslint": {}
   "linter-ui-default":
-    panelHeight: 177
+    panelHeight: 300
+    showPanel: true
   minimap: {}
   "spell-check":
     addKnownWords: true
@@ -198,6 +209,9 @@
 ".java.source":
   editor:
     preferredLineLength: 100
+".plain.text":
+  whitespace:
+    removeTrailingWhitespace: false
 ".source.ts":
   editor:
     scrollPastEnd: false

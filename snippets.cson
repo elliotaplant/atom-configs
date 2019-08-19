@@ -74,6 +74,9 @@
   'import React':
     'prefix': 'ireact'
     'body': 'import React from \'react\';\n'
+  'import styled-components':
+    'prefix': 'istyled'
+    'body': 'import styled from \'styled-components\';\n'
   'import Fragment':
     'prefix': 'ifrag'
     'body': 'import React, { Fragment } from \'react\';\n'
@@ -140,20 +143,61 @@
   'Print message with variable':
     'prefix': 'pri'
     'body': 'print(\'$1\', $1)'
+  'Print message':
+    'prefix': 'pr'
+    'body': 'print(\'$1\')'
 
 '.source.go':
   'Print message':
     'prefix': 'pr'
     'body': 'fmt.Println("$1")'
-  'Print message with variable':
+  'Print message with string':
     'prefix': 'pri'
     'body': 'fmt.Printf("$1: %s\\\\n", $1)'
+  'Print message with decimal':
+    'prefix': 'prid'
+    'body': 'fmt.Printf("$1: %d\\\\n", $1)'
   'Spew message with variable':
     'prefix': 'pris'
     'body': 'fmt.Printf("$1: %s\\\\n", spew.Sdump($1))'
   'Error check':
     'prefix': 'err'
     'body': 'if err != nil {\n\treturn err\n}'
+  'Nil error check':
+    'prefix': 'nerr'
+    'body': 'if err != nil {\n\treturn nil, err\n}'
   'cmp Diff':
     'prefix': 'ifdif'
     'body': 'if diff := cmp.Diff($1, $2); diff != "" {\n\tt.Errorf("$3 mismatch (-want +got):\\\\n%s", diff)\n}'
+  'assert.New':
+    'prefix': 'ast'
+    'body': 'assert := assert.New(t)\n'
+  'Receiver Func':
+    'prefix': 'recfunc'
+    'body': 'func ($1 *$2) $3($4) $5 {\n\treturn nil\n}'
+  'suite template':
+    'prefix': 'suitetemp'
+    'body': '''
+      type $1Suite struct {
+      	suite.Suite
+      	assert *assert.Assertions
+      }
+
+      func Test$1Suite(t *testing.T) {
+      	suite.Run(t, new($1Suite))
+      }
+
+      func (suite *$1Suite) SetupTest() {
+      	suite.assert = assert.New(suite.T())
+      }
+
+      func (suite *$1Suite) Test$2() {
+      	suite.assert.NotNil(nil)
+      }
+'''
+  'Assert no error':
+    'prefix': 'noerr'
+    'body': 'suite.assert.NoError(err)'
+  'Assert equal':
+    'prefix': 'equal'
+    'body': 'suite.assert.Equal(${1:expected}, ${2:actual})'

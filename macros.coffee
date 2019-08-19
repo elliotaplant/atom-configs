@@ -124,9 +124,21 @@ this.cycleVariableType.hideIcon = true; // dont show this on the toolbar
 # pasteWithCommas
 `
 function pasteJoined(joiner) {
-  const toPaste = atom.clipboard.metadata.selections.map(selection => selection.text).join(joiner);
-  atom.workspace.getActiveTextEditor()
-    .selections.forEach(selection => selection.insertText(toPaste), { select: true });
+  const clipMeta = atom.clipboard.metadata
+  if (clipMeta) {
+    let toPaste = "";
+    if (clipMeta.selections) {
+      clipMeta.selections.map(selection => selection.text).join(joiner);
+
+      toPaste = atom.clipboard.metadata.selections.map(selection => selection.text).join(joiner);
+    } else {
+      toPaste = atom.clipboard.read();
+    }
+    const te = atom.workspace.getActiveTextEditor()
+    if (te) {
+      te.selections.forEach(selection => selection.insertText(toPaste), { select: true });
+    }
+  }
 }
 
 this.pasteWithCommas = function() {
@@ -139,6 +151,24 @@ this.pasteWithCommaNewlines = function() {
 }
 this.pasteWithCommaNewlines.hideIcon = true;
 `
+
+# collapseAll
+@collapseAll = ->
+  # dispatchEditorCommand('tree-view:collapse-all')
+  # dispatchWorkspaceCommand('tree-view:collapse-all')
+  dispatchEditorCommand('tree-view:toggle-focus')
+    .then((e) -> console.log(e))
+  # dispatchWorkspaceCommand('tree-view:collapse-all')
+  #   .then(e => console.log(e))
+  # dispatchWorkspaceCommand('tree-view:toggle')
+  #   .then(() -> console.log('done!'))
+  #   .then(() -> )
+  #   .then(() -> console.log('well here we are!'))
+
+
+  # dispatchEditorCommand('tree-view:collapse-all')
+  # dispatchEditorCommand('tree-view:toggle-focus')
+
 
 # propTypes
 `
