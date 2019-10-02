@@ -151,3 +151,5 @@
   'ctrl-cmd-shift-V': 'macros:pasteWithCommaNewlines'
   'ctrl-p': 'macros:togglePointers'
   'cmd-ctrl-b': 'atom-beautify:beautify-editor'
+  'cmd-ctrl-b': 'atom-beautify:beautify-editor'
+  'alt-shift-p': 'macros:pivotArgs'

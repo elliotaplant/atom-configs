@@ -177,7 +177,6 @@ this.propTypes = function propTypes(joiner) {
   const firstProptype = '  prop: PropTypes.string.isRequired,';
   const closing = '}';
   const importStatement = "import PropTypes from 'prop-types';"
-  console.log(atom.workspace.getActiveTextEditor())
   atom.workspace.getActiveTextEditor()
     .selections[0].insertText([
       componentLine,
@@ -222,9 +221,9 @@ this.pivotArgs = function pivotArgs(joiner) {
   }
 
   function findOpenParen(startRow, startColumn) {
-    let closeCount = 0
-    let currentRow = startRow
-    let currentColumn = startColumn
+    let closeCount = 0;
+    let currentRow = startRow;
+    let currentColumn = startColumn - 1;
     while (currentRow >= 0) {
       if (charAt(currentRow, currentColumn) === '(') {
         if (closeCount === 0) {
@@ -238,10 +237,11 @@ this.pivotArgs = function pivotArgs(joiner) {
       currentColumn--
       if (currentColumn < 0) {
         currentRow--
-        currentColumn = editor.lineTextForBufferRow(currentRow).length
+        line = editor.lineTextForBufferRow(currentRow)
+        currentColumn = line ? line.length : 0;
       }
     }
-    throw new Error("Unable to find opening '(' character")
+    return null
   }
 
   function findCloseParen(startRow, startColumn) {
@@ -249,7 +249,6 @@ this.pivotArgs = function pivotArgs(joiner) {
     let currentRow = startRow
     let currentColumn = startColumn
     while (currentRow <= editor.getLineCount()) {
-      console.log(currentRow, currentColumn, charAt(currentRow, currentColumn))
       if (charAt(currentRow, currentColumn) === ')') {
         if (openCount === 0) {
           return {row: currentRow, column: currentColumn}
@@ -260,19 +259,24 @@ this.pivotArgs = function pivotArgs(joiner) {
         openCount++
       }
       currentColumn++
-      if (currentColumn > editor.lineTextForBufferRow(currentRow).length) {
+      line = editor.lineTextForBufferRow(currentRow)
+      if (!line) {
+        return null
+      } else if (currentColumn > line.length) {
         currentRow++
         currentColumn = 0
       }
     }
-    throw new Error("Unable to find closing ')' character")
+    return null
   }
 
   editor.cursors.forEach(cursor => {
     const { row, column } = cursor.getBufferPosition();
     const openParen = findOpenParen(row, column);
     const closeParen = findCloseParen(row, column);
-    console.log(openParen, closeParen)
+    if (!openParen || !closeParen) {
+      return null
+    }
 
     const range = [[openParen.row, openParen.column], [closeParen.row, closeParen.column]];
     const currentContents = cursor.editor.getTextInBufferRange(range).slice(1);
