@@ -187,3 +187,103 @@ this.propTypes = function propTypes(joiner) {
     ].join('\n'))
 }
 `
+
+# togglePointers
+# Toggles * and & characters
+`
+this.togglePointers = function togglePointers(joiner) {
+  atom.workspace.getActiveTextEditor().cursors.forEach(cursor => {
+    const { row, column } = cursor.getBufferPosition()
+    const range = [[row, column], [row, column + 1]]
+    const currentContents = cursor.editor.getTextInBufferRange(range)
+    if (currentContents == '*') {
+      cursor.editor.setTextInBufferRange(range, '&')
+    } else if (currentContents == '&') {
+      cursor.editor.setTextInBufferRange(range, '*')
+    }
+  })
+}
+`
+
+# pivotArgs
+# turns functionCall(arg, arg2, arg3) into
+# functionCall(
+#   arg,
+#   arg2,
+#   arg3,
+# )
+`
+this.pivotArgs = function pivotArgs(joiner) {
+  const editor = atom.workspace.getActiveTextEditor()
+
+  function charAt(row, column) {
+    const range = [[row, column], [row, column + 1]]
+    return editor.getTextInBufferRange(range)
+  }
+
+  function findOpenParen(startRow, startColumn) {
+    let closeCount = 0
+    let currentRow = startRow
+    let currentColumn = startColumn
+    while (currentRow >= 0) {
+      if (charAt(currentRow, currentColumn) === '(') {
+        if (closeCount === 0) {
+          return {row: currentRow, column: currentColumn}
+        } else {
+          closeCount--
+        }
+      } else if (charAt(currentRow, currentColumn) == ')') {
+        closeCount++
+      }
+      currentColumn--
+      if (currentColumn < 0) {
+        currentRow--
+        currentColumn = editor.lineTextForBufferRow(currentRow).length
+      }
+    }
+    throw new Error("Unable to find opening '(' character")
+  }
+
+  function findCloseParen(startRow, startColumn) {
+    let openCount = 0
+    let currentRow = startRow
+    let currentColumn = startColumn
+    while (currentRow <= editor.getLineCount()) {
+      console.log(currentRow, currentColumn, charAt(currentRow, currentColumn))
+      if (charAt(currentRow, currentColumn) === ')') {
+        if (openCount === 0) {
+          return {row: currentRow, column: currentColumn}
+        } else {
+          openCount--
+        }
+      } else if (charAt(currentRow, currentColumn) == '(') {
+        openCount++
+      }
+      currentColumn++
+      if (currentColumn > editor.lineTextForBufferRow(currentRow).length) {
+        currentRow++
+        currentColumn = 0
+      }
+    }
+    throw new Error("Unable to find closing ')' character")
+  }
+
+  editor.cursors.forEach(cursor => {
+    const { row, column } = cursor.getBufferPosition();
+    const openParen = findOpenParen(row, column);
+    const closeParen = findCloseParen(row, column);
+    console.log(openParen, closeParen)
+
+    const range = [[openParen.row, openParen.column], [closeParen.row, closeParen.column]];
+    const currentContents = cursor.editor.getTextInBufferRange(range).slice(1);
+    const argList = currentContents.split(',').map(arg => arg.trim());
+    if (openParen.row == closeParen.row) {
+      const verticalList = '(\n' + argList.join(',\n') + '\n'
+      cursor.editor.setTextInBufferRange(range, verticalList)
+    } else {
+      const horizontalList = '(' + argList.join(', ') + ''
+      cursor.editor.setTextInBufferRange(range, horizontalList)
+    }
+  })
+}
+`

@@ -101,6 +101,7 @@
       "multi-cursor"
       "goto-definition"
       "grammar-selector"
+      "atom-sync"
     ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
@@ -114,6 +115,7 @@
       "cmd-k"
     ]
   editor:
+    fontSize: 13
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
@@ -186,6 +188,9 @@
     addKnownWords: true
     knownWords: [
       "Binance"
+      "collateralization"
+      "Coinbase"
+      "Bitstamp"
     ]
   "split-diff":
     ignoreWhitespace: true

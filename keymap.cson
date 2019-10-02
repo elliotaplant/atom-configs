@@ -108,7 +108,6 @@
   'alt-h': 'editor:move-to-beginning-of-word'
   'ctrl-tab': 'snippets:next-tab-stop'
 
-
 'body atom-text-editor.autocomplete-active':
   'tab': 'autocomplete-plus:move-down'
   'shift-tab': 'autocomplete-plus:move-up'
@@ -130,6 +129,7 @@
   'cmd-alt-l': 'pane:show-next-item'
   'cmd-alt-h': 'pane:show-previous-item'
   'shift-cmd-o': 'tabs:close-other-tabs'
+  'ctrl-cmd-o': 'tabs:close-tabs-to-right'
 
 '.platform-darwin atom-text-editor':
   'shift-alt-cmd-l': 'window:toggle-right-dock'
@@ -149,3 +149,5 @@
   'alt-shift-k': 'block-travel:select-up'
   'cmd-shift-V': 'macros:pasteWithCommas'
   'ctrl-cmd-shift-V': 'macros:pasteWithCommaNewlines'
+  'ctrl-p': 'macros:togglePointers'
+  'cmd-ctrl-b': 'atom-beautify:beautify-editor'
