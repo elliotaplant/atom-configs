@@ -116,6 +116,9 @@
   'it test':
     'prefix': 'it'
     'body': 'it(\'$1\', () => {\n\n});'
+  'beforeEach':
+    'prefix': 'bef'
+    'body': 'beforeEach(() => {\n\t$1\n});'
   'new Promise':
     'prefix': 'nPromise'
     'body': 'new Promise((resolve, reject) => {\n$1\n});'

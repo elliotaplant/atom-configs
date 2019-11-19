@@ -203,6 +203,7 @@
   "tree-view":
     alwaysOpenExisting: true
   "vim-mode-plus":
+    askOptInToEditorScrollPastEnd: false
     highlightSearch: false
     keymapPToPutWithAutoIndent: true
     keymapYToYankToLastCharacterOfLine: true
