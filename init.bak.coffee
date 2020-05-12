@@ -26,3 +26,5 @@ atom.commands.add 'atom-text-editor',
     scrollTo = scrollTop + (lineHeight * 10)
 
     editor.setScrollTop(scrollTo)
+`
+`
