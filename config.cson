@@ -115,7 +115,7 @@
       "cmd-k"
     ]
   editor:
-    fontSize: 13
+    fontSize: 12
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
@@ -145,6 +145,7 @@
     autocomplete:
       suppressBuiltinAutocompleteProvider: false
     config: {}
+    disableToolCheck: true
     lint:
       tool: "golangci-lint"
     navigator:
@@ -191,7 +192,12 @@
       "collateralization"
       "Coinbase"
       "Bitstamp"
+      "excersized"
     ]
+    locales: [
+      "en-US"
+    ]
+    noticesMode: "console"
   "split-diff":
     ignoreWhitespace: true
     leftEditorColor: "red"

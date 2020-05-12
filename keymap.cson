@@ -151,3 +151,4 @@
   'cmd-ctrl-b': 'atom-beautify:beautify-editor'
   'cmd-ctrl-b': 'atom-beautify:beautify-editor'
   'alt-shift-p': 'macros:pivotArgs'
+  'alt-shift-n': 'diagnostics:go-to-next-diagnostic'

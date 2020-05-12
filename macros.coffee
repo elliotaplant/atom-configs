@@ -214,24 +214,28 @@ this.togglePointers = function togglePointers(joiner) {
 `
 this.pivotArgs = function pivotArgs(joiner) {
   const editor = atom.workspace.getActiveTextEditor()
+  const openCharToCloseChar = { '(': ')', '[': ']', '{': '}' }
+  const openingChars = new Set(Object.keys(openCharToCloseChar))
+  const closingChars = new Set(Object.values(openCharToCloseChar))
 
   function charAt(row, column) {
     const range = [[row, column], [row, column + 1]]
     return editor.getTextInBufferRange(range)
   }
 
-  function findOpenParen(startRow, startColumn) {
+  function findOpenChar(startRow, startColumn) {
     let closeCount = 0;
     let currentRow = startRow;
     let currentColumn = startColumn - 1;
     while (currentRow >= 0) {
-      if (charAt(currentRow, currentColumn) === '(') {
+      const char = charAt(currentRow, currentColumn);
+      if (openingChars.has(char)) {
         if (closeCount === 0) {
-          return {row: currentRow, column: currentColumn}
+          return {row: currentRow, column: currentColumn, char}
         } else {
           closeCount--
         }
-      } else if (charAt(currentRow, currentColumn) == ')') {
+      } else if (closingChars.has(char)) {
         closeCount++
       }
       currentColumn--
@@ -244,18 +248,19 @@ this.pivotArgs = function pivotArgs(joiner) {
     return null
   }
 
-  function findCloseParen(startRow, startColumn) {
+  function findCloseChar(startRow, startColumn, openChar) {
     let openCount = 0
     let currentRow = startRow
     let currentColumn = startColumn
+    const closeChar = openCharToCloseChar[openChar]
     while (currentRow <= editor.getLineCount()) {
-      if (charAt(currentRow, currentColumn) === ')') {
+      if (charAt(currentRow, currentColumn) === closeChar) {
         if (openCount === 0) {
-          return {row: currentRow, column: currentColumn}
+          return {row: currentRow, column: currentColumn, char: closeChar}
         } else {
           openCount--
         }
-      } else if (charAt(currentRow, currentColumn) == '(') {
+      } else if (charAt(currentRow, currentColumn) == openChar) {
         openCount++
       }
       currentColumn++
@@ -272,20 +277,20 @@ this.pivotArgs = function pivotArgs(joiner) {
 
   editor.cursors.forEach(cursor => {
     const { row, column } = cursor.getBufferPosition();
-    const openParen = findOpenParen(row, column);
-    const closeParen = findCloseParen(row, column);
-    if (!openParen || !closeParen) {
+    const openChar = findOpenChar(row, column);
+    const closeChar = findCloseChar(row, column, openChar.char);
+    if (!openChar || !closeChar) {
       return null
     }
 
-    const range = [[openParen.row, openParen.column], [closeParen.row, closeParen.column]];
+    const range = [[openChar.row, openChar.column], [closeChar.row, closeChar.column]];
     const currentContents = cursor.editor.getTextInBufferRange(range).slice(1);
     const argList = currentContents.split(',').map(arg => arg.trim());
-    if (openParen.row == closeParen.row) {
-      const verticalList = '(\n' + argList.join(',\n') + '\n'
+    if (openChar.row == closeChar.row) {
+      const verticalList = openChar.char + '\n' + argList.join(',\n') + '\n'
       cursor.editor.setTextInBufferRange(range, verticalList)
     } else {
-      const horizontalList = '(' + argList.join(', ') + ''
+      const horizontalList = openChar.char + argList.join(', ') + ''
       cursor.editor.setTextInBufferRange(range, horizontalList)
     }
   })
@@ -334,5 +339,61 @@ this.leftOuter = function leftOuter() {
   const [firstSet, ...rest] = getSets(editor);
   const leftOuterSet = new Set([...firstSet].filter((item) => !rest.some(set => set.has(item))));
   setFirst(leftOuterSet, editor)
+}
+`
+# hello world
+# hi    world
+# hey   world
+# heya  world
+#
+#
+
+`
+this.decodeBase64 = function decodeBase64() {
+  const textEditor = atom.workspace.getActiveTextEditor();
+  const selections = textEditor.getSelections();
+  selections.forEach(selection => {
+    selection.insertText(decodeURIComponent(escape(atob(selection.getText()))), { select: true })
+  })
+}
+`
+
+`
+this.alignSpacing = function alignSpacing() {
+  const textEditor = atom.workspace.getActiveTextEditor();
+  const checkpoint = textEditor.buffer.createCheckpoint();
+  const selections = textEditor.getSelections();
+  const maxColumn = selections.reduce((maxColumn, selection) => Math.max(maxColumn, selection.getBufferRange().start.column), 0)
+  selections.forEach((selection) => {
+    const start = selection.getBufferRange().start.column;
+    const spaces = " ".repeat(maxColumn - start);
+    selection.insertText(spaces + selection.getText());
+  })
+  textEditor.buffer.groupChangesSinceCheckpoint(checkpoint)
+}
+`
+
+
+`
+this.evalJS = function evalJS() {
+  const textEditor = atom.workspace.getActiveTextEditor();
+  const checkpoint = textEditor.buffer.createCheckpoint();
+  const selections = textEditor.getSelections();
+  const texts = selections.map(selection => selection.getText())
+  const evalled = texts.map(txt => eval(txt))
+  selections.forEach((selection, i) => selection.insertText(String(evalled[i])))
+  textEditor.buffer.groupChangesSinceCheckpoint(checkpoint)
+}
+`
+
+`
+this.pythonClean = function pythonClean() {
+  const textEditor = atom.workspace.getActiveTextEditor();
+  const checkpoint = textEditor.buffer.createCheckpoint();
+  const selections = textEditor.getSelections();
+  const texts = selections.map(selection => selection.getText())
+  const replaced = texts.map(txt => txt.replace(/'/g, '"').replace(/Decimal\(/gi, '').replace(/\)/, ''))
+  selections.forEach((selection, i) => selection.insertText(replaced[i]))
+  textEditor.buffer.groupChangesSinceCheckpoint(checkpoint)
 }
 `

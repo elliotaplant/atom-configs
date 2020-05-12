@@ -35,81 +35,6 @@
   'import classnames':
     'prefix': 'icl'
     'body': 'import cn from \'classnames\';\n'
-  'import AppComponents':
-    'prefix': 'iac'
-    'body': 'import $1 from \'AppComponents/$1\';\n'
-  'import FormInput':
-    'prefix': 'iform'
-    'body': 'import $1 from \'AppComponents/FormInputs/$1\';\n'
-  'import AppReducers':
-    'prefix': 'iar'
-    'body': 'import { $2 } from \'AppReducers/$1\';\n'
-  'import AppUtils':
-    'prefix': 'iau'
-    'body': 'import { $2 } from \'AppUtils/$1\';\n'
-  'import AppUtils/javascript':
-    'prefix': 'ijavascript'
-    'body': 'import { $1 } from \'AppUtils/javascript\';\n'
-  'import HOC':
-    'prefix': 'ihoc'
-    'body': 'import $1 from \'AppUtils/HOC/$1\';\n'
-  'import connect':
-    'prefix': 'iconnnect'
-    'body': 'import { connect } from \'react-redux\';\n'
-  'import compose':
-    'prefix': 'icompose'
-    'body': 'import { compose } from \'recompose\';\n'
-  'import lifecycle':
-    'prefix': 'ilifecycle'
-    'body': 'import lifecycle from \'react-pure-lifecycle\';\n'
-  'import constants':
-    'prefix': 'iconstants'
-    'body': 'import { $1 } from \'constants/app\';\n'
-  'import style':
-    'prefix': 'istyle'
-    'body': 'import { $1 } from \'./index.scss\';\n'
-  'import proptypes':
-    'prefix': 'iprop'
-    'body': 'import { $1 } from \'AppUtils/propTypes\';\n'
-  'import PropTypes':
-    'prefix': 'iPropTypes'
-    'body': 'import PropTypes from \'prop-types\';\n'
-  'import React':
-    'prefix': 'ireact'
-    'body': 'import React from \'react\';\n'
-  'import styled-components':
-    'prefix': 'istyled'
-    'body': 'import styled from \'styled-components\';\n'
-  'import Fragment':
-    'prefix': 'ifrag'
-    'body': 'import React, { Fragment } from \'react\';\n'
-  'import logError':
-    'prefix': 'ilog'
-    'body': 'import { logError } from \'AppUtils/logging\';\n'
-  'import Relative':
-    'prefix': 'irelative'
-    'body': 'import $1 from \'./$1\';\n'
-  'import Intl':
-    'prefix': 'iintl'
-    'body': 'import { FormattedMessage$1 } from \'react-intl\';\n'
-  'import metadata':
-    'prefix': 'imetadata'
-    'body': 'import $1 from \'metadata/$1.json\';\n'
-  'import AppApi':
-    'prefix': 'iap'
-    'body': 'import { $2 } from \'AppApi/$1\';\n'
-  'import errorNotificationAction':
-    'prefix': 'ierrnotif'
-    'body': 'import { errorNotificationAction } from \'AppReducers/notifications\';\n'
-  'import addNotificationAction':
-    'prefix': 'inotif'
-    'body': 'import { addNotificationAction } from \'AppReducers/notifications\';\n'
-  'import transformation':
-    'prefix': 'itransformation'
-    'body': 'import { $1 } from \'AppUtils/transformation\';\n'
-  'import materialui icon':
-    'prefix': 'imuiicon'
-    'body': 'import $1 from \'@material-ui/icons/$1\';\n'
   'describe tests':
     'prefix': 'desc'
     'body': 'describe(\'$1\', () => {\n\n});'
@@ -122,6 +47,9 @@
   'new Promise':
     'prefix': 'nPromise'
     'body': 'new Promise((resolve, reject) => {\n$1\n});'
+  'async main script':
+    'prefix': 'main'
+    'body': 'async function main() {\n  $1\n}\n\nmain().catch(console.error)'
 
 '.source.ts':
   'Short console message':
@@ -207,3 +135,9 @@
   'Assert equal':
     'prefix': 'equal'
     'body': 'suite.assert.Equal(${1:expected}, ${2:actual})'
+  'Go Magic Date':
+    'prefix': 'godate'
+    'body': 'Mon Jan 2 15:04:05 MST 2006'
+  'Go Magic Date ISO':
+    'prefix': 'godateISO'
+    'body': '2006-01-02T15:04:05.999Z'
