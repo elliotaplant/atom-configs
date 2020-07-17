@@ -3,13 +3,15 @@ const pasteJoined = require('./pasteJoined');
 const pivotArgs = require('./pivotArgs');
 const setStuff = require('./setStuff');
 const togglePointers = require('./togglePointers');
+const findAndReplace = require('./findAndReplace');
 
 const allMacros = {
   ...catchall,
   ...pasteJoined,
   ...pivotArgs,
   ...setStuff,
-  ...togglePointers  ,
+  ...togglePointers,
+  ...findAndReplace,
 };
 
 for (const macroFunctionName in allMacros) {

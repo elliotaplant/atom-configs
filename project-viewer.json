@@ -1,0 +1,62 @@
+{
+  "info": {
+    "version": "1.1.0",
+    "updated": "2020-07-01T16:34:37.330Z"
+  },
+  "root": [
+    {
+      "type": "project",
+      "name": "MDGW",
+      "icon": "icon-move-left",
+      "color": "#5477bd",
+      "devMode": false,
+      "config": {},
+      "paths": [
+        "/Users/elliotplant/go/src/mdgw"
+      ]
+    },
+    {
+      "type": "project",
+      "name": "EGW",
+      "icon": "icon-move-right",
+      "color": "#f5bb00",
+      "devMode": false,
+      "config": {},
+      "paths": [
+        "/Users/elliotplant/Documents/code/trading/exchange-gateways"
+      ]
+    },
+    {
+      "type": "group",
+      "name": "MetaUtils",
+      "sortBy": "alphabetically",
+      "icon": "icon-microscope",
+      "color": "#f75468",
+      "expanded": false,
+      "list": [
+        {
+          "type": "project",
+          "name": "Metadata",
+          "icon": "devicons-scrum",
+          "color": "#248232",
+          "devMode": false,
+          "config": {},
+          "paths": [
+            "/Users/elliotplant/Documents/code/bitbridge/metadata"
+          ]
+        },
+        {
+          "type": "project",
+          "name": "BBPythonUtils",
+          "icon": "icon-tools",
+          "color": "#ff808f",
+          "devMode": false,
+          "config": {},
+          "paths": [
+            "/Users/elliotplant/Documents/code/bitbridge/bbpythonutils"
+          ]
+        }
+      ]
+    }
+  ]
+}

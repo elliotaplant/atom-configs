@@ -1,5 +1,7 @@
 "*":
   "atom-beautify":
+    csv:
+      disabled: true
     general:
       _analyticsUserId: "795eef1c-c9a2-45a0-8c4a-e32d8da410cf"
     go:
@@ -10,6 +12,8 @@
       wrap_line_length: 70
     js:
       brace_style: "collapse-preserve-inline"
+      default_beautifier: "Prettier"
+      end_with_comma: true
       end_with_newline: true
       object_curly_spacing: true
     json:
@@ -18,6 +22,7 @@
     jsx:
       beautify_on_save: true
       brace_style: "collapse-preserve-inline"
+      default_beautifier: "JS Beautify"
       e4x: false
       end_with_newline: true
       object_curly_spacing: true
@@ -63,7 +68,9 @@
   "configurable-autocomplete-snippets":
     suggestionPriority: 4
   core:
+    allowPendingPaneItems: false
     audioBeep: false
+    closeDeletedFileTabs: true
     closeEmptyWindows: false
     disabledPackages: [
       "markdown-preview-plus"
@@ -71,6 +78,7 @@
       "emmet"
       "language-typescript"
       "linter"
+      "macros"
     ]
     ignoredNames: [
       ".git"
@@ -122,6 +130,8 @@
     softWrap: true
   "exception-reporting":
     userId: "c8be361d-65b0-e083-6643-808e2d26edb2"
+  "file-icons":
+    colourChangedOnly: true
   "file-types":
     $debug: true
     Dockerfile: {}
@@ -204,6 +214,7 @@
     rightEditorColor: "green"
     scrollSyncType: "Vertical + Horizontal"
     syncHorizontalScroll: true
+  "status-bar": {}
   "sync-settings":
     _analyticsUserId: "ce5df772-4da0-4bb9-8f26-614728dc39fe"
   "tree-view":
