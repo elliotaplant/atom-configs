@@ -80,7 +80,6 @@
   'cmd-i': 'cursor-history:prev'
   'cmd-shift-i': 'cursor-history:next'
   'cmd-shift-e': 'open-similar:open'
-  'cmd-p': 'typescript:show-type'
   'cmd-ctrl-c': 'editor:copy-project-path'
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
   'cmd-;': 'trailing-semicolon:semicolon'
@@ -152,3 +151,11 @@
   'alt-shift-p': 'macroon:pivotArgs'
   'alt-shift-n': 'diagnostics:go-to-next-diagnostic'
   'cmd-shift-e': 'macroon:searchInCurrentFolder'
+  'cmd-p': 'fuzzy-finder:toggle-file-finder'
+
+'.platform-darwin atom-text-editor[data-grammar="source ts"], .platform-darwin atom-text-editor[data-grammar="source tsx"]':
+  'cmd-b': 'typescript:go-to-declaration'
+  'cmd-ctrl-b': 'typescript:format-code'
+  'cmd-alt-l': 'pane:show-next-item'
+  'cmd-b': 'typescript:go-to-declaration'
+  'cmd-i': 'typescript:return-from-declaration'

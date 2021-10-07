@@ -50,6 +50,15 @@
   'async main script':
     'prefix': 'main'
     'body': 'async function main() {\n  $1\n}\n\nmain().catch(console.error)'
+  'import styled':
+    'prefix': 'istyle'
+    'body': 'import styled from \'styled-components\';'
+  'export default function':
+    'prefix': 'defun'
+    'body': 'export default function $1() {\n  $2\n}'
+  'import FontAwesomeIcon':
+    'prefix': 'ifont'
+    'body': 'import { FontAwesomeIcon } from \'@fortawesome/react-fontawesome\';\nimport { $1 } from \'@fortawesome/free-solid-svg-icons\';'
 
 '.source.ts':
   'Short console message':

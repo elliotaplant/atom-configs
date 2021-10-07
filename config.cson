@@ -47,7 +47,9 @@
       "atom-ide-debugger": "never"
   "atom-jest-snippets": {}
   "atom-package-deps":
-    ignored: []
+    ignored: [
+      "linter-ui-default"
+    ]
   "atom-shell-commands":
     commands: [
       {
@@ -76,9 +78,9 @@
       "markdown-preview-plus"
       "linter-xo"
       "emmet"
-      "language-typescript"
-      "linter"
       "macros"
+      "pigments"
+      "atom-ide-ui"
     ]
     ignoredNames: [
       ".git"
@@ -123,7 +125,7 @@
       "cmd-k"
     ]
   editor:
-    fontSize: 12
+    fontSize: 13
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
@@ -186,14 +188,27 @@
     disabling:
       disableWhenNoEslintConfig: false
     global:
-      eslintrcPath: "/Users/elliotplant/.eslintrc.js"
+      eslintrcPath: "/Users/planterbox/.eslintrc.js"
       globalNodePath: "/usr/local"
+    scopes: [
+      "source.js"
+      "source.jsx"
+      "source.js.jsx"
+      "source.flow"
+      "source.babel"
+      "source.js-semantic"
+      "source.ts"
+      "source.tsx"
+    ]
   "linter-flake8":
     maxLineLength: 120
-  "linter-tslint": {}
+  "linter-tslint":
+    fixOnSave: true
   "linter-ui-default":
     panelHeight: 300
-    showPanel: true
+    showProviderName: true
+  "markdown-preview":
+    breakOnSingleNewline: true
   minimap: {}
   "spell-check":
     addKnownWords: true
@@ -203,6 +218,7 @@
       "Coinbase"
       "Bitstamp"
       "excersized"
+      "hemheroid"
     ]
     locales: [
       "en-US"

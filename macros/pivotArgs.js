@@ -6,9 +6,10 @@
 //   arg3,
 // )
 
+
 function pivotArgs(joiner) {
   const editor = atom.workspace.getActiveTextEditor()
-  const openCharToCloseChar = { '(': ')', '[': ']', '{': '}' }
+  const openCharToCloseChar = { '(': ')', '[': ']', '{': '}', '<': '>' }
   const openingChars = new Set(Object.keys(openCharToCloseChar))
   const closingChars = new Set(Object.values(openCharToCloseChar))
 
@@ -74,18 +75,29 @@ function pivotArgs(joiner) {
     const openChar = findOpenChar(row, column);
     const closeChar = findCloseChar(row, column, openChar.char);
     if (!openChar || !closeChar) {
-      return null
+      return null;
     }
 
     const range = [[openChar.row, openChar.column], [closeChar.row, closeChar.column]];
     const currentContents = cursor.editor.getTextInBufferRange(range).slice(1);
-    const argList = currentContents.split(',').map(arg => arg.trim());
-    if (openChar.row == closeChar.row) {
-      const verticalList = openChar.char + '\n' + argList.join(',\n') + '\n'
-      cursor.editor.setTextInBufferRange(range, verticalList)
+    let argList;
+    const isProps = openChar.char === '<';
+
+    if (isProps) {
+      argList = currentContents.split(/([\w\d]+=|\/)/)
+        .map(e => e.trim())
+        .map((e, i, a) => (i === 0 ? e : (i % 2 === 1 ? e + a[i+1] || '' : null)))
+        .filter(Boolean);
     } else {
-      const horizontalList = openChar.char + argList.join(', ') + ''
-      cursor.editor.setTextInBufferRange(range, horizontalList)
+      argList = currentContents.split(',').map(arg => arg.trim());
+    }
+
+    if (openChar.row == closeChar.row) {
+      let verticalList = openChar.char + (isProps ? '' : '\n') + argList.join((isProps ? '' : ',') + '\n') + '\n';
+      cursor.editor.setTextInBufferRange(range, verticalList);
+    } else {
+      const horizontalList = openChar.char + argList.join((isProps ? '' : ',') + ' ');
+      cursor.editor.setTextInBufferRange(range, horizontalList);
     }
   })
 }

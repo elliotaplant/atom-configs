@@ -39,9 +39,14 @@ function pythonClean() {
   textEditor.buffer.groupChangesSinceCheckpoint(checkpoint)
 }
 
+function now() {
+  atom.notifications.addSuccess(new Date().toLocaleString());
+}
+
 module.exports = {
   decodeBase64,
   alignSpacing,
   evalJS,
   pythonClean,
+  now,
 }
