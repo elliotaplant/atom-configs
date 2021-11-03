@@ -52,6 +52,7 @@
   # Commands that were removed from git-plus
   'cmd-shift-c': 'git-plus:commit'
   'cmd-shift-a': 'git-plus:add-all-and-commit'
+  'cmd-\'': 'toggle-quotes:toggle'
 
 '.results-view':
   'k': 'core:move-up'
@@ -158,4 +159,10 @@
   'cmd-ctrl-b': 'typescript:format-code'
   'cmd-alt-l': 'pane:show-next-item'
   'cmd-b': 'typescript:go-to-declaration'
-  'cmd-i': 'typescript:return-from-declaration'
+  'cmd-shift-b': 'typescript:return-from-declaration'
+  'cmd-i': 'intentions:show'
+
+'atom-text-editor.intentions-list.vim-mode-plus':
+  'enter': 'intentions:confirm'
+  'tab': 'core:move-down'
+  'shift-tab': 'core:move-up'

@@ -60,6 +60,8 @@
           keymap: "cmd-shift-b"
       }
     ]
+  "atom-typescript":
+    autocompletionSuggestionPriority: 1
   "autocomplete-plus":
     backspaceTriggersAutocomplete: true
     minimumWordLength: 1
@@ -74,6 +76,10 @@
     audioBeep: false
     closeDeletedFileTabs: true
     closeEmptyWindows: false
+    customFileTypes:
+      "source.shell": [
+        "envrc"
+      ]
     disabledPackages: [
       "markdown-preview-plus"
       "linter-xo"
@@ -81,6 +87,7 @@
       "macros"
       "pigments"
       "atom-ide-ui"
+      "linter-eslint"
     ]
     ignoredNames: [
       ".git"
@@ -112,6 +119,7 @@
       "goto-definition"
       "grammar-selector"
       "atom-sync"
+      "toggle-quotes"
     ]
     restorePreviousWindowsOnStart: "no"
     telemetryConsent: "no"
@@ -125,7 +133,7 @@
       "cmd-k"
     ]
   editor:
-    fontSize: 13
+    fontSize: 12
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
@@ -188,7 +196,6 @@
     disabling:
       disableWhenNoEslintConfig: false
     global:
-      eslintrcPath: "/Users/planterbox/.eslintrc.js"
       globalNodePath: "/usr/local"
     scopes: [
       "source.js"
@@ -205,13 +212,22 @@
   "linter-tslint":
     fixOnSave: true
   "linter-ui-default":
-    panelHeight: 300
+    panelHeight: 157
     showProviderName: true
   "markdown-preview":
     breakOnSingleNewline: true
   minimap: {}
+  "prettier-atom":
+    formatOnSaveOptions:
+      enabled: true
   "spell-check":
     addKnownWords: true
+    excludedScopes: [
+      "source.asciidoc"
+      "source.gfm"
+      "text.git-commit"
+      "text.plain.null-grammar"
+    ]
     knownWords: [
       "Binance"
       "collateralization"
@@ -233,6 +249,8 @@
   "status-bar": {}
   "sync-settings":
     _analyticsUserId: "ce5df772-4da0-4bb9-8f26-614728dc39fe"
+  "toggle-quotes":
+    quoteCharacters: "\"'`"
   "tree-view":
     alwaysOpenExisting: true
   "vim-mode-plus":

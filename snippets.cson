@@ -76,6 +76,29 @@
   'TSlint disable max-line-length':
     'prefix': 'tsl'
     'body': '// tslint:disable:max-line-length\n$1// tslint:enable:max-line-length'
+  'Jest fn()':
+    'prefix': 'jestfn'
+    'body': 'jest.fn()'
+  'describe tests':
+    'prefix': 'desc'
+    'body': 'describe(\'$1\', () => {\n\n});'
+  'it test':
+    'prefix': 'it'
+    'body': 'it(\'$1\', () => {\n\n});'
+  'it async test':
+    'prefix': 'ita'
+    'body': 'it(\'$1\', async () => {\n\n});'
+  'beforeEach':
+    'prefix': 'bef'
+    'body': 'beforeEach(() => {\n\t$1\n});'
+
+'.text.html':
+  'Favicon Link':
+    'prefix': 'favicon'
+    'body': '<link rel="icon" type="image/png" href="/favicon.png">'
+  'Viewport':
+    'prefix': 'viewport'
+    'body': '<meta name="viewport" content="width=device-width, initial-scale=1">'
 
 '.source.scss':
   'Import variables':
