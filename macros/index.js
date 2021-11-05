@@ -1,9 +1,10 @@
-const catchall = require('./catchall');
-const pasteJoined = require('./pasteJoined');
-const pivotArgs = require('./pivotArgs');
-const setStuff = require('./setStuff');
-const togglePointers = require('./togglePointers');
-const findAndReplace = require('./findAndReplace');
+const catchall = require("./catchall");
+const pasteJoined = require("./pasteJoined");
+const pivotArgs = require("./pivotArgs");
+const setStuff = require("./setStuff");
+const togglePointers = require("./togglePointers");
+const findAndReplace = require("./findAndReplace");
+const makeProps = require("./makeProps");
 
 const allMacros = {
   ...catchall,
@@ -12,8 +13,11 @@ const allMacros = {
   ...setStuff,
   ...togglePointers,
   ...findAndReplace,
+  ...makeProps,
 };
 
 for (const macroFunctionName in allMacros) {
-  atom.commands.add('atom-text-editor', `macroon:${macroFunctionName}`, () => allMacros[macroFunctionName]());
+  atom.commands.add("atom-text-editor", `macroon:${macroFunctionName}`, () =>
+    allMacros[macroFunctionName]()
+  );
 }

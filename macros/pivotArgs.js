@@ -6,16 +6,18 @@
 //   arg3,
 // )
 
-
 function pivotArgs(joiner) {
-  const editor = atom.workspace.getActiveTextEditor()
-  const openCharToCloseChar = { '(': ')', '[': ']', '{': '}', '<': '>' }
-  const openingChars = new Set(Object.keys(openCharToCloseChar))
-  const closingChars = new Set(Object.values(openCharToCloseChar))
+  const editor = atom.workspace.getActiveTextEditor();
+  const openCharToCloseChar = { "(": ")", "[": "]", "{": "}", "<": ">" };
+  const openingChars = new Set(Object.keys(openCharToCloseChar));
+  const closingChars = new Set(Object.values(openCharToCloseChar));
 
   function charAt(row, column) {
-    const range = [[row, column], [row, column + 1]]
-    return editor.getTextInBufferRange(range)
+    const range = [
+      [row, column],
+      [row, column + 1],
+    ];
+    return editor.getTextInBufferRange(range);
   }
 
   function findOpenChar(startRow, startColumn) {
@@ -26,51 +28,51 @@ function pivotArgs(joiner) {
       const char = charAt(currentRow, currentColumn);
       if (openingChars.has(char)) {
         if (closeCount === 0) {
-          return {row: currentRow, column: currentColumn, char}
+          return { row: currentRow, column: currentColumn, char };
         } else {
-          closeCount--
+          closeCount--;
         }
       } else if (closingChars.has(char)) {
-        closeCount++
+        closeCount++;
       }
-      currentColumn--
+      currentColumn--;
       if (currentColumn < 0) {
-        currentRow--
-        line = editor.lineTextForBufferRow(currentRow)
+        currentRow--;
+        line = editor.lineTextForBufferRow(currentRow);
         currentColumn = line ? line.length : 0;
       }
     }
-    return null
+    return null;
   }
 
   function findCloseChar(startRow, startColumn, openChar) {
-    let openCount = 0
-    let currentRow = startRow
-    let currentColumn = startColumn
-    const closeChar = openCharToCloseChar[openChar]
+    let openCount = 0;
+    let currentRow = startRow;
+    let currentColumn = startColumn;
+    const closeChar = openCharToCloseChar[openChar];
     while (currentRow <= editor.getLineCount()) {
       if (charAt(currentRow, currentColumn) === closeChar) {
         if (openCount === 0) {
-          return {row: currentRow, column: currentColumn, char: closeChar}
+          return { row: currentRow, column: currentColumn, char: closeChar };
         } else {
-          openCount--
+          openCount--;
         }
       } else if (charAt(currentRow, currentColumn) == openChar) {
-        openCount++
+        openCount++;
       }
-      currentColumn++
-      line = editor.lineTextForBufferRow(currentRow)
+      currentColumn++;
+      line = editor.lineTextForBufferRow(currentRow);
       if (!line) {
-        return null
+        return null;
       } else if (currentColumn > line.length) {
-        currentRow++
-        currentColumn = 0
+        currentRow++;
+        currentColumn = 0;
       }
     }
-    return null
+    return null;
   }
 
-  editor.cursors.forEach(cursor => {
+  editor.cursors.forEach((cursor) => {
     const { row, column } = cursor.getBufferPosition();
     const openChar = findOpenChar(row, column);
     const closeChar = findCloseChar(row, column, openChar.char);
@@ -78,28 +80,39 @@ function pivotArgs(joiner) {
       return null;
     }
 
-    const range = [[openChar.row, openChar.column], [closeChar.row, closeChar.column]];
+    const range = [
+      [openChar.row, openChar.column],
+      [closeChar.row, closeChar.column],
+    ];
     const currentContents = cursor.editor.getTextInBufferRange(range).slice(1);
     let argList;
-    const isProps = openChar.char === '<';
+    const isProps = openChar.char === "<";
 
     if (isProps) {
-      argList = currentContents.split(/([\w\d]+=|\/)/)
-        .map(e => e.trim())
-        .map((e, i, a) => (i === 0 ? e : (i % 2 === 1 ? e + a[i+1] || '' : null)))
+      argList = currentContents
+        .split(/([\w\d]+=|\/)/)
+        .map((e) => e.trim())
+        .map((e, i, a) =>
+          i === 0 ? e : i % 2 === 1 ? e + a[i + 1] || "" : null
+        )
         .filter(Boolean);
     } else {
-      argList = currentContents.split(',').map(arg => arg.trim());
+      argList = currentContents.split(",").map((arg) => arg.trim());
     }
 
     if (openChar.row == closeChar.row) {
-      let verticalList = openChar.char + (isProps ? '' : '\n') + argList.join((isProps ? '' : ',') + '\n') + '\n';
+      let verticalList =
+        openChar.char +
+        (isProps ? "" : "\n") +
+        argList.join((isProps ? "" : ",") + "\n") +
+        "\n";
       cursor.editor.setTextInBufferRange(range, verticalList);
     } else {
-      const horizontalList = openChar.char + argList.join((isProps ? '' : ',') + ' ');
+      const horizontalList =
+        openChar.char + argList.join((isProps ? "" : ",") + " ");
       cursor.editor.setTextInBufferRange(range, horizontalList);
     }
-  })
+  });
 }
 
-module.exports = { pivotArgs }
+module.exports = { pivotArgs };

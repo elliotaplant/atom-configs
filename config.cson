@@ -81,12 +81,7 @@
         "envrc"
       ]
     disabledPackages: [
-      "markdown-preview-plus"
-      "linter-xo"
-      "emmet"
       "macros"
-      "pigments"
-      "atom-ide-ui"
       "linter-eslint"
     ]
     ignoredNames: [
