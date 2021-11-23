@@ -104,6 +104,7 @@
   'cmd-h': 'editor:move-to-first-character-of-line'
   'alt-h': 'editor:move-to-beginning-of-word'
   'ctrl-tab': 'snippets:next-tab-stop'
+  'cmd-e': 'linter-ui-default:next'
 
 'body atom-text-editor.autocomplete-active':
   'tab': 'autocomplete-plus:move-down'

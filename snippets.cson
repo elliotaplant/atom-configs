@@ -91,6 +91,9 @@
   'beforeEach':
     'prefix': 'bef'
     'body': 'beforeEach(() => {\n\t$1\n});'
+  'export default function':
+    'prefix': 'exportdefaultfunction'
+    'body': 'export default function $1() {\n\n}'
 
 '.text.html':
   'Favicon Link':

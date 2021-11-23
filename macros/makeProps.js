@@ -11,9 +11,21 @@ function makeProps() {
   editor.cursors.forEach((cursor) => {
     const wordRange = cursor.getCurrentWordBufferRange();
     const componentName = editor.getTextInBufferRange(wordRange);
+    const propsInterface = `${componentName}Props`;
+
+    const hasProps = cursor.getCurrentBufferLine().includes("({");
+    const lastParenIndex = cursor.getCurrentBufferLine().lastIndexOf(")");
+
+    if (hasProps && lastParenIndex > cursor.getBufferColumn()) {
+      editor.buffer.insert(
+        [wordRange.start.row, lastParenIndex],
+        `: ${propsInterface}`
+      );
+    }
+
     editor.buffer.insert(
       [wordRange.start.row, 0],
-      `interface ${componentName}Props {\n}\n\n`
+      `interface ${propsInterface} {\n}\n\n`
     );
   });
 }
