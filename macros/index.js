@@ -5,6 +5,7 @@ const setStuff = require("./setStuff");
 const togglePointers = require("./togglePointers");
 const findAndReplace = require("./findAndReplace");
 const makeProps = require("./makeProps");
+const makeIndex = require("./makeIndex");
 
 const allMacros = {
   ...catchall,
@@ -14,6 +15,7 @@ const allMacros = {
   ...togglePointers,
   ...findAndReplace,
   ...makeProps,
+  ...makeIndex,
 };
 
 for (const macroFunctionName in allMacros) {

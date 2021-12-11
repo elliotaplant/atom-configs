@@ -45,6 +45,7 @@
   'cmd-shift-r': 'tree-view:show-current-file-in-file-manager'
   'h': 'tree-view:recursive-collapse-directory'
   'left': 'tree-view:recursive-collapse-directory'
+  'i': 'unset!'
 
 '.platform-darwin atom-workspace':
   'cmd-\\': 'tree-view:toggle'
