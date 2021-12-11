@@ -1,38 +1,31 @@
-const { Directory, File } = require("pathwatcher");
+const fs = require("fs");
+const path = require("path");
 
-async function makeIndexTs(joiner) {
-  try {
-    const editor = atom.workspace.getActiveTextEditor();
-    const directoryPath = editor.getDirectoryPath();
-    const indexFilePath = `${directoryPath}/index.ts`;
-    const directory = new Directory(directoryPath);
-    const indexFile = new File(indexFilePath);
-    const created = await indexFile.create();
-    const entries = directory.getEntriesSync();
-    console.log("entries", entries);
-    const filesToExport = entries
-      .filter((entry) => entry instanceof File)
-      .map((file) => file.path)
-      .filter(
-        (path) =>
-          !path.endsWith("/index.ts") &&
-          (path.endsWith(".ts") || path.endsWith(".tsx"))
-      )
-      .map((path) =>
-        path
-          .split("/")
-          .slice(-1)[0]
-          .replace(/\.tsx?$/g, "")
-      );
-    const indexFileContents = filesToExport
-      .map((fileName) => `export * from './${fileName}';`)
-      .sort()
-      .join("\n");
+function makeIndexTs(joiner) {
+  const editor = atom.workspace.getActiveTextEditor();
+  const directoryPath = editor.getDirectoryPath();
+  const indexFilePath = path.join(directoryPath, "index.ts");
 
-    indexFile.writeSync(indexFileContents);
-  } catch (e) {
-    console.error(e);
-  }
+  const files = fs
+    .readdirSync(directoryPath)
+    .filter((entry) => fs.lstatSync(path.join(directoryPath, entry)).isFile());
+
+  const withoutExistingIndex = files.filter(
+    (fileName) => fileName !== "index.ts"
+  );
+  const onlyTsFiles = withoutExistingIndex.filter(
+    (fileName) => fileName.endsWith(".ts") || fileName.endsWith(".tsx")
+  );
+  const withoutExtensions = onlyTsFiles.map((fileName) =>
+    fileName.replace(/\.tsx?$/g, "")
+  );
+
+  const indexFileContents = withoutExtensions
+    .map((fileName) => `export * from './${fileName}';`)
+    .sort()
+    .join("\n");
+
+  fs.writeFileSync(indexFilePath, indexFileContents);
 }
 
 module.exports = { makeIndexTs };
