@@ -16,14 +16,17 @@ function makeIndexTs(joiner) {
   const onlyTsFiles = withoutExistingIndex.filter(
     (fileName) => fileName.endsWith(".ts") || fileName.endsWith(".tsx")
   );
-  const withoutExtensions = onlyTsFiles.map((fileName) =>
+  const noTestFiles = onlyTsFiles.filter(
+    (fileName) => fileName.inclues('.spec.') || fileName.includes('.test.')
+  );
+  const withoutExtensions = noTestFiles.map((fileName) =>
     fileName.replace(/\.tsx?$/g, "")
   );
 
   const indexFileContents = withoutExtensions
     .map((fileName) => `export * from './${fileName}';`)
     .sort()
-    .join("\n");
+    .join("\n") + "\n";
 
   fs.writeFileSync(indexFilePath, indexFileContents);
 }

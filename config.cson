@@ -208,7 +208,7 @@
   "linter-tslint":
     fixOnSave: true
   "linter-ui-default":
-    panelHeight: 157
+    panelHeight: 303
     showProviderName: true
   "markdown-preview":
     breakOnSingleNewline: true
@@ -216,6 +216,7 @@
   "prettier-atom":
     formatOnSaveOptions:
       enabled: true
+      isDisabledIfNotInPackageJson: true
   "spell-check":
     addKnownWords: true
     excludedScopes: [
