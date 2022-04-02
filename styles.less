@@ -50,3 +50,13 @@ atom-text-editor::shadow .cursor {
 .experiment-prompt {
   display: none !important;
 }
+
+/* font-icon styles */
+
+// Makes .integration-spec.ts match .spec.ts files
+.icon[data-name$=".integration-spec.ts"]:before {
+    font-family: file-icons;
+    content: "\ea69";
+    top: 3px;
+    font-size: 17px;
+}

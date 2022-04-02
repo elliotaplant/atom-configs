@@ -94,6 +94,9 @@
   'export function':
     'prefix': 'exfun'
     'body': 'export function $1() {\n\n}'
+  'import currency':
+    'prefix': 'icurrency'
+    'body': 'import * as Currency from \'currency.js\';'
 
 '.text.html':
   'Favicon Link':

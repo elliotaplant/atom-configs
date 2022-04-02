@@ -17,7 +17,7 @@ function makeIndexTs(joiner) {
     (fileName) => fileName.endsWith(".ts") || fileName.endsWith(".tsx")
   );
   const noTestFiles = onlyTsFiles.filter(
-    (fileName) => fileName.inclues('.spec.') || fileName.includes('.test.')
+    (fileName) => !(fileName.includes('.spec.') || fileName.includes('.test.'))
   );
   const withoutExtensions = noTestFiles.map((fileName) =>
     fileName.replace(/\.tsx?$/g, "")
